@@ -1,0 +1,16 @@
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { selectAllUsers } from '../users/usersSlice';
+
+const PostAuthor = ({ userId }) => {
+  const users = useSelector(selectAllUsers);
+
+  const author = users.find(user => user.id === userId);
+
+  return (
+    <span>by {author ? <Link to={`/user/${userId}`}>{author.name}</Link> : "Unkown author"}</span>
+  )
+}
+
+export default PostAuthor;
